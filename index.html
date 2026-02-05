@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Vision Group | Officiel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root { 
+            --marine: #0a192f; --orange: #ff6b00; --white: #ffffff; 
+            --accent: #00d4ff; --dark-card: #112240; --green: #25d366; --gray: #8892b0;
+        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--marine); color: var(--white); scroll-behavior: smooth; line-height: 1.6; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: rgba(10,25,47,0.95); position: sticky; top: 0; border-bottom: 2px solid var(--orange); z-index: 1000; }
+        .logo { font-weight: 900; font-size: 24px; color: var(--orange); text-decoration:none; }
+        .menu a { color: white; text-decoration: none; margin-left: 20px; font-size: 13px; font-weight: bold; }
+        .hero { padding: 120px 5%; text-align: center; background: linear-gradient(rgba(10,25,47,0.7), rgba(10,25,47,0.7)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80'); background-size: cover; background-attachment: fixed; }
+        .starlink-badge { background: var(--accent); color: var(--marine); padding: 5px 15px; border-radius: 50px; font-weight: bold; display: inline-block; margin-bottom: 20px; }
+        .ceo-section { background: var(--dark-card); padding: 60px 5%; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,107,0,0.2); }
+        .ceo-photo { width: 200px; height: 200px; border-radius: 50%; border: 4px solid var(--orange); object-fit: cover; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 5% 40px; }
+        .card { background: #1d3557; border-radius: 15px; overflow: hidden; transition: 0.4s; border: 1px solid rgba(255,255,255,0.05); text-align: center; margin-bottom: 20px; }
+        .card:hover { transform: translateY(-10px); border-color: var(--orange); }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        .card-body { padding: 25px; }
+        .card i { font-size: 40px; color: var(--orange); margin-bottom: 15px; }
+        .btn-detail { background: none; border: 1px solid var(--orange); color: var(--orange); padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .btn-detail:hover { background: var(--orange); color: white; }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); }
+        .modal-content { background: var(--dark-card); margin: 5% auto; padding: 40px; width: 85%; max-width: 700px; border-radius: 20px; border: 2px solid var(--orange); position: relative; animation: zoomIn 0.3s; color: white; text-align: left; }
+        .close { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: var(--orange); }
+        footer { padding: 60px 5%; background: #020c1b; text-align: center; }
+        .whatsapp { position: fixed; bottom: 30px; right: 30px; background: var(--green); color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 35px; z-index: 1500; text-decoration: none; }
+        @keyframes zoomIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">SMART VISION GROUP</a>
+        <div class="menu">
+            <a href="#expert">L'Expert</a>
+            <a href="#tech">Services</a>
+            <a href="#construction">Briques</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="starlink-badge"><i class="fas fa-satellite"></i> STARLINK + MIKROTIK + FORMATION</div>
+        <h1>L'Innovation à votre service.</h1>
+        <p>Réseaux, Maintenance, Bureautique, Énergie et Construction.</p>
+    </section>
+
+    <section class="ceo-section" id="expert">
+        <img src="https://i.ibb.co/wNyKd6Mx/votre-image.jpg" alt="Responsable" class="ceo-photo">
+        <div class="ceo-text">
+            <h2>Le Promoteur</h2>
+            <p style="font-size: 1.5rem; color: var(--gray);">DIRAIKENAN NGUEDOUBOUM ROLAND</p>
+            <p>"Smart Vision Group est le pont entre la technologie moderne et les besoins concrets de notre communauté."</p>
+        </div>
+    </section>
+
+    <h2 style="text-align: center; color: var(--orange); margin-top: 50px;" id="tech">PÔLE TECHNOLOGIQUE</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=600">
+            <div class="card-body">
+                <i class="fas fa-laptop"></i>
+                <h3>Recharge & Vente PC</h3>
+                <button class="btn-detail" onclick="openModal('modalPC')">Détails</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=600">
+            <div class="card-body">
+                <i class="fas fa-solar-panel"></i>
+                <h3>Installation Solaire</h3>
+                <button class="btn-detail" onclick="openModal('modalSolaire')">Détails</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=600">
+            <div class="card-body">
+                <i class="fas fa-network-wired"></i>
+                <h3>Réseaux & Bureautique</h3>
+                <button class="btn-detail" onclick="openModal('modalReseau')">Détails</button>
+            </div>
+        </div>
+    </div>
+
+    <h2 style="text-align: center; color: var(--orange); margin-top: 50px;" id="construction">PÔLE CONSTRUCTION</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600">
+            <div class="card-body">
+                <i class="fas fa-fire-alt"></i>
+                <h3>Briques Cuites</h3>
+                <button class="btn-detail" onclick="openModal('modalBriques')">Détails</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalPC" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalPC')">&times;</span>
+            <h2>Recharge & Vente</h2>
+            <ul>
+                <li>Recharge mobile et PC via énergie propre.</li>
+                <li>Vente de laptops performants et équipements informatiques.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div id="modalSolaire" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalSolaire')">&times;</span>
+            <h2>Installation Solaire</h2>
+            <ul>
+                <li>Kits solaires complets pour domiciles et bureaux.</li>
+                <li>Installation et pointage d'antennes paraboliques (Canal+, etc.).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalReseau" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalReseau')">&times;</span>
+            <h2>Réseaux & Bureautique</h2>
+            <ul>
+                <li>Installation Starlink & MikroTik.</li>
+                <li>Partage de connexion haut débit sécurisé.</li>
+                <li>Services Bureautique complets.</li>
+                <li>Formation certifiante et astuces informatiques.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modalBriques" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modalBriques')">&times;</span>
+            <h2>Briques Cuites</h2>
